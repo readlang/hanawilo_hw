@@ -87,4 +87,27 @@ Object: When key/value operations (lookup, update, insertion, deletion) should b
 Time: linear, space: constant
 This loops thru an array, and for each element of the array it does one operation, which is linear time complexity.  It is just looking up single elements of the array, which is constant space complexity.
 - 2
-
+Time: linear, space: linear
+The forEach loops through the array (linear time) then pushes (constant time).  This simplifies to linear time.  Space is linear because worse-case, the `arrayOfIndexes` would be the same size as the original array (linear space).
+- 3
+Time: constant, space: constant
+This fn is looking up four values in an array, making constant space and time complexity.
+- 4
+Time: linear, space: constant
+This fn is looping thru the array (linear complexity), and looking up single values and saving to a variable - constant space.
+- 5
+Time: constant, space: constant.  This fn just looks up 2 values in an array.
+- 6
+Time: O(log n) space: O(log n)
+This fn is recursive, and on each recursive call it cuts the data in half.
+- 7
+Time: Quadratic, space: linear
+This fn has nested loops, (quadratic time) and it potentially stores all the values of the inputs in a new array.
+- 8
+Time: linear (it's a for loop) Space: constant (it's looking up and updating single values)
+- 9
+Time: quadratic - a array.includes (linear) inside a forEach loop (linear)
+Space: linear - worst case the dupeArray duplicates the array
+- 10
+Time: linear - it potentially has to loop thru the array twice.
+Space: linear - it is potentially creating a new array of same length
