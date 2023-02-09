@@ -24,6 +24,7 @@ const maxSubarraySum = (arr, n) => {
     
     // slide the window
     // for loop: update temp with new window
+    // new temp = old temp - element leaving window + new window element
     // if max < temp, max = temp
     for (let i = n; i < arr.length; i++) {
         tempSum = tempSum - arr[i-n] + arr[i]
@@ -35,11 +36,12 @@ const maxSubarraySum = (arr, n) => {
     return maxSum
 }
 // Problem 1 Test Cases:
-// console.log(maxSubarraySum([100,200,300,400], 2)) // 700
-// console.log(maxSubarraySum([1,4,2,10,23,3,1,0,20], 4)) // 39
-// console.log(maxSubarraySum([-3,4,0,-2,6,-1], 2)) // 5
-// console.log(maxSubarraySum([3,-2,7,-4,1,-1,4,-2,1],2)) // 5
-// console.log(maxSubarraySum([2,3], 3)) // null
+console.log("- Problem 1 -")
+console.log(maxSubarraySum([100,200,300,400], 2)) // 700
+console.log(maxSubarraySum([1,4,2,10,23,3,1,0,20], 4)) // 39
+console.log(maxSubarraySum([-3,4,0,-2,6,-1], 2)) // 5
+console.log(maxSubarraySum([3,-2,7,-4,1,-1,4,-2,1],2)) // 5
+console.log(maxSubarraySum([2,3], 3)) // null
 
 
 
@@ -57,17 +59,16 @@ function binarySearchFirstOccurrence(nums, target) {
          // set the mid index, round down to integer value
         let mid = Math.floor((start + end) / 2)
 
-        // if target value is found:
-        // return mid if it's at the 0 index, OR if the value to left is not the same
+        // if target value is found, check further:
+        // return mid if it's at the 0 index, OR if the value to the left is not the same
         if (nums[mid] === target) {
             if (mid === 0 || nums[mid-1] !== target) return mid
         }
-
         if (nums[mid] < target) {
             start = mid + 1
         } else { 
-            // nums[mid] > or = target
-            // this is necessary to keep searching for the first occurance
+            // this block assumes nums[mid] >= target
+            // this is necessary to keep searching for the first (leftmost) occurance
             end = mid - 1
         }
     }
@@ -75,6 +76,7 @@ function binarySearchFirstOccurrence(nums, target) {
     return -1
 }
 // Test cases
+console.log("- Problem 2 -")
 let nums1 = [1, 2, 3, 4, 5];
 let target1 = 3;
 let expected1 = 2;
@@ -106,10 +108,11 @@ function lengthOfLongestSubstring(s) {
     // edge case
     if (s.length < 2) return s.length;
 
-    // set up counters and obj to keep track of repeating chars
+    // set up counters for max and temp 
     let maxLength = 0
     let tempLength = 0
 
+    // set up obj to keep track of repeating characters 
     let obj = {}
 
     for (i=0; i<s.length; i++) {
@@ -117,7 +120,8 @@ function lengthOfLongestSubstring(s) {
         if ( !obj[s[i]] ) {
             tempLength++  // increment
         } else {
-            // reset counter and obj
+            // this block means the letter IS in the obj (a repeat)
+            // therefore, reset counter and obj
             tempLength = 1 
             obj = {}
         }
@@ -126,6 +130,7 @@ function lengthOfLongestSubstring(s) {
     }
     return maxLength
 }
+console.log("- Problem 3 -")
 console.log(lengthOfLongestSubstring("abcabcbb")); // Output: 3
 console.log(lengthOfLongestSubstring("bbbbbb")); // Output: 1
 console.log(lengthOfLongestSubstring("pwwkew")); // Output: 3
