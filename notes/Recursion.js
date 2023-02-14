@@ -1,8 +1,10 @@
 
 function recursive(num) {
+    // always need base case
     if (num === 0) return
 
     console.log(num)
+    // recursive call
     recursive(num - 1)
 }
 
