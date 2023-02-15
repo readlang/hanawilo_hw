@@ -30,18 +30,22 @@ class SinglyLinkedList {
     push(val) {
         let newNode = new Node(val)
 
-        if (!this.length) {
+        // "this" refers to the SLL you're working on
+        // if length is 0
+        if (!this.length) {  
             this.head = newNode
             this.tail = newNode
-        } else {
+        } else {  // length not 0
             this.tail.next = newNode
             this.tail = newNode
         }
-        this.length++
-        return this // "this" refers to the linkedlist you're working on
+        // add one to length
+        this.length++ 
+        return this 
     }
 
     pop() {
+        // if length is 0
         if (!this.length) return; // return undefined
 
         let current = this.head
@@ -49,11 +53,29 @@ class SinglyLinkedList {
 
         while (current.next) {
             newTail = current
-            current = current.next
+            current = current.next 
+            // current will be one further than newTail
         }
 
-        this.tail = newTail
-        this.tail.next = null
+        this.tail = newTail  // newTail will be the 2nd to last
+        this.tail.next = null // this will drop last node from SLL
+        this.length-- 
+
+        if (this.length === 0) {
+            this.head = null
+            this.tail = null
+        }
+
+        // return the element popped off the end
+        return current
+    }
+
+    shift(){
+        if (!this.length) return undefined;
+
+        let removedHead = this.head;
+
+        this.head = removedHead.next
         this.length--
 
         if (this.length === 0) {
@@ -61,17 +83,11 @@ class SinglyLinkedList {
             this.tail = null
         }
 
-        return current
-
-        // ended here...
-    }
-
-    shift(){
-
+        return removedHead
     }
     
-    unshift(){
-
+    unshift(val){
+        let newNode = new Node(val)
     }
 
     get(index){
