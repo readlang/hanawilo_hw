@@ -19,5 +19,3 @@ const binarySearch = (nums, target) => {
 
 console.log(binarySearch([0,1,2,3,4,5,6,7], 0))
 
-// doesn't work if target if index is at ends of array
-// while loop must have start equals or lessthan end...

@@ -1,4 +1,18 @@
+// Single Linked List Pattern
 
+/*
+SLL methods:
+- Push()
+- Pop()
+- Shift()
+- Unshift()
+- Get()
+- Set()
+- Insert()
+- Remove()
+*/
+
+// The Linked List consists of Nodes
 class Node {
     constructor(val) {
         this.val = val;
@@ -12,6 +26,7 @@ class SinglyLinkedList {
         this.tail = null
         this.length = 0;
     }
+
     push(val) {
         let newNode = new Node(val)
 
@@ -49,6 +64,30 @@ class SinglyLinkedList {
         return current
 
         // ended here...
+    }
+
+    shift(){
+
+    }
+    
+    unshift(){
+
+    }
+
+    get(index){
+
+    }
+
+    set(){
+
+    }
+
+    insert(){
+
+    }
+
+    remove(){
+
     }
 }
 

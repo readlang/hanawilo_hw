@@ -1,6 +1,4 @@
-
-
-// Sliding window:
+// Sliding window pattern
 
 maxSubarray = (arr, k) => {
     // edge case
@@ -14,9 +12,10 @@ maxSubarray = (arr, k) => {
     let tempSum = maxSum
 
     // slide the window
-    // new temp = old temp - element leaving window + new window element
+    // new temp = old temp - element leaving window + element entering window
     for (let i = k; i < arr.length; i++) {
         tempSum = tempSum - arr[i-k] + arr[i]
+        // if new temp is larger, reassign maxSum
         if (tempSum > maxSum) { maxSum = tempSum }
     }
     return maxSum
