@@ -71,6 +71,7 @@ class SinglyLinkedList {
     }
 
     shift(){
+        // shift is like pop but from the front
         if (!this.length) return undefined;
 
         let removedHead = this.head;
@@ -87,10 +88,30 @@ class SinglyLinkedList {
     }
     
     unshift(val){
+        // unshift is like push but on the front
         let newNode = new Node(val)
+
+        if (!this.length) {
+            this.tail = newNode
+        }
+
+        newNode.next = this.head
+        this.head = newNode
+      
+        this.length++
+
+        return this
     }
 
     get(index){
+        // get retrieves a certain node in the LL
+        if (index < 0 || index >= this.length) return undefined;
+        let counter = 0
+        let current = this.head
+
+        while (condition) {
+            
+        }
 
     }
 
