@@ -49,12 +49,13 @@ class SinglyLinkedList {
         if (!this.length) return; // return undefined
 
         let current = this.head
-        let newTail = current
+        let newTail = this.head
 
+        // this will stop when current is on last node,
+        // and newTail is on 2nd to last node
         while (current.next) {
             newTail = current
             current = current.next 
-            // current will be one further than newTail
         }
 
         this.tail = newTail  // newTail will be the 2nd to last
@@ -66,7 +67,7 @@ class SinglyLinkedList {
             this.tail = null
         }
 
-        // return the element popped off the end
+        // return the element popped off the end (the former last element )
         return current
     }
 
@@ -109,27 +110,74 @@ class SinglyLinkedList {
         let counter = 0
         let current = this.head
 
-        while (condition) {
-            
+        // this will move thru the nodes until it finds the index
+        while (counter != index) {
+            current = current.next
+            counter++
         }
-
+        return current // current node
     }
 
-    set(){
+    set(index, val){ // update ("set") a node at index to value
+        let foundNode = this.get(index)
 
+        if (foundNode) {
+            foundNode.val = val
+            return true
+        }
+        return false
     }
 
-    insert(){
+    insert(index, val){
+        if (index < 0 || index > this.length ) return undefined;
+        if (index === this.length) return this.push(val)
+        if (index === 0) return this.unshift(val)
 
+        let newNode = new Node(val) // define the new node
+
+        let beforeNode = this.get(index-1)
+
+        newNode.next = beforeNode.next
+        beforeNode.next = newNode
+        
+        this.length++
+        return this
     }
 
-    remove(){
+    remove(index){
+        if (index < 0 || index >= this.length) return undefined;
+        if (index === 0) return this.shift()
+        if (index === this.length) return this.pop()
 
+        let removedNode = this.get(index)
+        let beforeNode = this.get(index-1)
+
+        beforeNode.next = removedNode.next
+        removedNode.next = null
+
+        this.length--
+        return removedNode
     }
 }
 
 const sll = new SinglyLinkedList()
-sll.push(9)
-sll.push(10)
+sll.push("Shifted")
+sll.push("B")
+sll.push("C")
+sll.push("D")
+sll.push("E")
+
+sll.pop()
+console.log(sll.shift())
+console.log(sll.unshift("First"))
+console.log("get:", sll.get(3).val )
 
 console.log(sll)
+let current = sll.head
+console.log(current.val)
+while (current.next) {
+    current = current.next    
+    console.log(current.val)
+}
+
+//expected output: A B C D

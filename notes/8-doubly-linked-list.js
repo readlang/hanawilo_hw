@@ -25,7 +25,8 @@ class DoublyLinkedList {
             this.tail = newNode
         }
         this.length++
-        return this
+        // return the entire list with the new element
+        return this 
     }
 
     pop() {
@@ -41,7 +42,7 @@ class DoublyLinkedList {
             this.tail.next = null
             poppedNode.prev = null
         }
-
+        
         this.length--
         return poppedNode //the popped element
     }
@@ -139,7 +140,7 @@ class DoublyLinkedList {
     }
 
     remove(index) { //
-        if (index < 0 || index > this.length) return undefined;
+        if (index < 0 || index >= this.length) return undefined;
 
         if (index === 0) return this.shift()
 
