@@ -1,6 +1,5 @@
 // multiple pointers pattern
 
-// must be used for SORTED array input
 // return two values of array that sum to 0
 function multiplePointers(array) {
     let left = 0
